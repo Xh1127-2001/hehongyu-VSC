@@ -1,0 +1,134 @@
+/* 全局基础样式 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: linear-gradient(135deg, #f5f7fb 0%, #edf2f7 100%);
+  color: #1f2937;
+}
+
+/* 名片外层容器，确保整体居中展示 */
+.card-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 32px;
+}
+
+/* 名片主体样式 */
+.business-card {
+  width: min(420px, 88vw);
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 12px; /* 圆角尺寸为 12px */
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08); /* 柔和阴影 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+  padding: 34px 28px 28px;
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+}
+
+/* 鼠标悬停时名片轻微上浮，并增强阴影 */
+.business-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 22px 48px rgba(15, 23, 42, 0.12);
+}
+
+/* 头像区域 */
+.avatar-wrap {
+  width: 118px;
+  height: 118px;
+  border-radius: 50%; /* 圆形头像 */
+  overflow: hidden;
+  border: 4px solid #e2e8f0;
+  box-shadow: 0 10px 24px rgba(59, 130, 246, 0.15);
+}
+
+.avatar-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* 信息区样式 */
+.info {
+  width: 100%;
+  text-align: center;
+}
+
+.role-tag {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: #eef6ff;
+  color: #3b82f6;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  margin-bottom: 16px;
+}
+
+.info h1 {
+  font-size: clamp(2rem, 4vw, 2.4rem);
+  margin-bottom: 8px;
+  color: #111827;
+}
+
+.info h2 {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #64748b;
+  margin-bottom: 24px;
+}
+
+/* 联系方式列表 */
+.contact-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 0.96rem;
+  color: #475569;
+}
+
+.contact-list li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  line-height: 1.6;
+}
+
+.contact-list span {
+  font-weight: 600;
+  color: #0f172a;
+}
+
+/* 在较窄屏幕上适当压缩间距，保证移动端体验 */
+@media (max-width: 480px) {
+  .business-card {
+    padding: 28px 20px 22px;
+    gap: 18px;
+  }
+
+  .avatar-wrap {
+    width: 100px;
+    height: 100px;
+  }
+
+  .contact-list li {
+    font-size: 0.9rem;
+  }
+}

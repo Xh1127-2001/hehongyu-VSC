@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>个人名片</title>
+    <!-- 引入外部样式表，保持 HTML 结构与 CSS 样式分离 -->
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- 页面主体容器，用于居中展示名片 -->
+    <main class="card-wrapper">
+      <!-- 名片主体 -->
+      <section class="business-card" aria-label="个人名片">
+        <!-- 头像区域 -->
+        <div class="avatar-wrap">
+          <img
+            src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&q=80"
+            alt="个人头像"
+          />
+        </div>
+
+        <!-- 个人信息区域 -->
+        <div class="info">
+          <!-- 职位标签 -->
+          <p class="role-tag">UX / Product Designer</p>
+
+          <!-- 姓名 -->
+          <h1>许晓晨</h1>
+
+          <!-- 职位 -->
+          <h2>高级产品设计师</h2>
+
+          <!-- 联系方式列表 -->
+          <ul class="contact-list">
+            <li><span>邮箱</span> hello@xuxiaocheng.com</li>
+            <li><span>电话</span> 138-0000-0000</li>
+            <li><span>地址</span> 上海市浦东新区</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
