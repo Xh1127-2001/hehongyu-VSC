@@ -1,0 +1,507 @@
+/* 全局基础样式 */
+:root {
+  color-scheme: light;
+  --gold: #b8904b;
+  --gold-light: #d7bd85;
+  --ink: #292820;
+  --muted: #77756e;
+  --paper: #f8f6f0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Noto Serif SC", "Songti SC", "Microsoft YaHei", serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* 页头与导航 */
+.site-header {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  min-height: 82px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 clamp(24px, 8vw, 120px);
+  background: rgba(248, 246, 240, 0.96);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-mark {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-size: 19px;
+}
+
+.brand-name,
+.footer-brand {
+  font-size: 21px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+.brand-name span,
+.footer-brand span {
+  color: var(--gold);
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(20px, 3.2vw, 46px);
+}
+
+.nav-link {
+  position: relative;
+  padding: 10px 0;
+  color: #59574f;
+  font-family: "Microsoft YaHei", sans-serif;
+  font-size: 14px;
+  transition: color 0.2s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--gold);
+}
+
+.nav-link.active::after {
+  position: absolute;
+  right: 0;
+  bottom: 2px;
+  left: 0;
+  height: 2px;
+  background: var(--gold);
+  content: "";
+}
+
+/* 首屏轮播区域 */
+.hero {
+  position: relative;
+  display: flex;
+  min-height: min(760px, calc(100vh - 82px));
+  align-items: center;
+  overflow: hidden;
+  background: #4a4638;
+  color: #fff;
+}
+
+.hero-slides,
+.hero-shade,
+.hero-slide {
+  position: absolute;
+  inset: 0;
+}
+
+.hero-slide {
+  background-position: center;
+  background-size: cover;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+.hero-slide.active {
+  opacity: 1;
+}
+
+.slide-one {
+  /* 使用仓库内的风景图片，避免轮播依赖外部图片服务 */
+  background-image: url("../1111/pic/t1.jpg");
+}
+
+.slide-two {
+  background-image: url("../1111/pic/t2.jpg");
+}
+
+.slide-three {
+  background-image: url("../1111/pic/t3.jpg");
+}
+
+.hero-shade {
+  background: linear-gradient(90deg, rgba(20, 23, 19, 0.72), rgba(20, 23, 19, 0.12) 76%),
+    linear-gradient(0deg, rgba(20, 23, 19, 0.22), transparent 40%);
+  pointer-events: none;
+}
+
+.hero-arrow {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  display: grid;
+  width: 48px;
+  height: 64px;
+  place-items: center;
+  transform: translateY(-50%);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  background: rgba(25, 25, 22, 0.22);
+  color: #fff;
+  cursor: pointer;
+  font-family: Arial, sans-serif;
+  font-size: 42px;
+  line-height: 1;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.hero-arrow:hover {
+  border-color: var(--gold-light);
+  background: rgba(184, 144, 75, 0.8);
+}
+
+.hero-arrow-prev {
+  left: clamp(16px, 4vw, 56px);
+}
+
+.hero-arrow-next {
+  right: clamp(16px, 4vw, 56px);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  width: min(1120px, 100%);
+  margin: 0 auto;
+  padding: 80px 32px;
+  animation: rise-in 0.8s ease both;
+}
+
+.eyebrow {
+  margin: 0 0 20px;
+  color: var(--gold-light);
+  font-family: "Microsoft YaHei", sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.25em;
+}
+
+.hero-content h1 {
+  margin: 0;
+  font-size: clamp(42px, 6.2vw, 78px);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  line-height: 1.35;
+}
+
+.hero-description {
+  margin: 22px 0 34px;
+  color: rgba(255, 255, 255, 0.82);
+  font-family: "Microsoft YaHei", sans-serif;
+  font-size: 15px;
+  letter-spacing: 0.08em;
+}
+
+.gold-button {
+  display: inline-flex;
+  min-height: 48px;
+  align-items: center;
+  gap: 22px;
+  padding: 0 22px;
+  border: 1px solid var(--gold-light);
+  color: #fff;
+  font-family: "Microsoft YaHei", sans-serif;
+  font-size: 13px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.gold-button:hover {
+  background: var(--gold-light);
+  color: var(--ink);
+}
+
+.hero-caption {
+  position: absolute;
+  z-index: 1;
+  right: clamp(24px, 8vw, 120px);
+  bottom: 36px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: rgba(255, 255, 255, 0.8);
+  font-family: "Microsoft YaHei", sans-serif;
+  font-size: 12px;
+}
+
+.caption-line {
+  width: 48px;
+  height: 1px;
+  background: var(--gold-light);
+}
+
+/* 视频与内容区 */
+.section-wrap {
+  width: min(1080px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+.video-section {
+  padding-top: 100px;
+  padding-bottom: 104px;
+}
+
+.section-heading {
+  margin-bottom: 34px;
+  text-align: center;
+}
+
+.section-heading .eyebrow,
+.more-links .eyebrow {
+  margin-bottom: 12px;
+  color: var(--gold);
+}
+
+.section-heading h2,
+.more-links h2 {
+  margin: 0 0 12px;
+  font-size: clamp(26px, 3vw, 38px);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+}
+
+.section-heading h2 span {
+  color: var(--gold);
+}
+
+.section-heading > p:last-child,
+.more-links > p:last-child {
+  margin: 0;
+  color: var(--muted);
+  font-family: "Microsoft YaHei", sans-serif;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.video-frame {
+  position: relative;
+  overflow: hidden;
+  background: #25241f;
+  box-shadow: 0 18px 48px rgba(48, 41, 28, 0.12);
+}
+
+.video-frame video {
+  display: block;
+  width: 100%;
+  max-height: 620px;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.video-label {
+  position: absolute;
+  top: 20px;
+  left: 22px;
+  padding: 8px 12px;
+  background: rgba(20, 20, 18, 0.58);
+  color: #fff;
+  font-family: "Microsoft YaHei", sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  pointer-events: none;
+}
+
+/* 城市介绍 */
+.intro-section {
+  padding: 78px 0 82px;
+  background: #efede5;
+}
+
+.intro-inner {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 56px;
+}
+
+.intro-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding-top: 8px;
+  color: var(--gold);
+  font-family: "Microsoft YaHei", sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+}
+
+.intro-number {
+  padding-right: 14px;
+  border-right: 1px solid var(--gold-light);
+  font-size: 20px;
+}
+
+.intro-copy h2 {
+  margin: 0 0 22px;
+  font-size: clamp(25px, 3vw, 36px);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+}
+
+.intro-copy p {
+  max-width: 760px;
+  margin: 0;
+  color: #66645d;
+  font-family: "Microsoft YaHei", sans-serif;
+  font-size: 15px;
+  line-height: 2.2;
+}
+
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 26px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--gold);
+  color: #806334;
+  font-family: "Microsoft YaHei", sans-serif;
+  font-size: 13px;
+}
+
+/* 首页延伸内容与页尾 */
+.more-links {
+  padding-top: 78px;
+  padding-bottom: 82px;
+  text-align: center;
+}
+
+.site-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 36px 24px 28px;
+  background: #292820;
+  color: rgba(255, 255, 255, 0.7);
+  text-align: center;
+}
+
+.footer-brand {
+  color: #fff;
+}
+
+.site-footer p {
+  margin: 12px 0 22px;
+  font-size: 13px;
+}
+
+.site-footer small {
+  color: rgba(255, 255, 255, 0.42);
+  font-family: "Microsoft YaHei", sans-serif;
+  font-size: 11px;
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 小屏幕适配 */
+@media (max-width: 680px) {
+  .site-header {
+    min-height: 72px;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 14px 20px 10px;
+  }
+
+  .brand-name {
+    font-size: 18px;
+  }
+
+  .main-nav {
+    width: 100%;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .nav-link {
+    font-size: 12px;
+  }
+
+  .hero {
+    min-height: 620px;
+    min-height: min(720px, calc(100svh - 110px));
+  }
+
+  .hero-content {
+    padding: 64px 24px;
+  }
+
+  .hero-arrow {
+    width: 38px;
+    height: 52px;
+    font-size: 34px;
+  }
+
+  .hero-content h1 {
+    font-size: clamp(38px, 10vw, 58px);
+  }
+
+  .hero-description {
+    max-width: 280px;
+    line-height: 1.9;
+  }
+
+  .video-section {
+    padding-top: 70px;
+    padding-bottom: 72px;
+  }
+
+  .intro-section {
+    padding: 58px 0 62px;
+  }
+
+  .intro-inner {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .intro-label {
+    padding-top: 0;
+  }
+
+  .video-label {
+    top: 12px;
+    left: 12px;
+    font-size: 9px;
+  }
+}
+
+/* 减少动态效果偏好 */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .hero-slide {
+    transition: none;
+  }
+
+  .hero-content {
+    animation: none;
+  }
+}
